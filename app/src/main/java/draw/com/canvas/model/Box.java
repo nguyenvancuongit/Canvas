@@ -1,4 +1,4 @@
-package draw.com.canvas.view;
+package draw.com.canvas.model;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
