@@ -3,7 +3,6 @@ package draw.com.canvas;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 
 import draw.com.canvas.L.L;
 import draw.com.canvas.constant.Constant;
@@ -15,7 +14,6 @@ public class ActivityMain extends AppCompatActivity {
 
     // store
     int[] screenSize;
-    private Node[] nodes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,18 +23,15 @@ public class ActivityMain extends AppCompatActivity {
         screenSize = Util.getScreenWidthHeight(this);
 
         // init sample node
-        Node nodeParent = new Node(Color.GREEN, 0, Constant.ROOT_ID);
-        Node nodeChild1 = new Node(Color.RED, 1, 0);
-        Node nodeChild2 = new Node(Color.RED, 2, 0);
-        Node nodeChild3 = new Node(Color.RED, 3, 0);
+        Node nodeRoot = new Node(Color.GREEN, 0, Constant.ROOT_ID);
 
         // init list current node
-        nodes = new Node[]{nodeParent, nodeChild1, nodeChild2, nodeChild3};
 
         // set position for all node
-        setPositionForAllNode(nodes);
+        //setPositionForAllNode(nodes);
 
-        View nodesView = new NodesView(this, nodes, screenSize);
+        NodesView nodesView = new NodesView(this, screenSize);
+        nodesView.AddNode(null, new Node[]{nodeRoot});
         setContentView(nodesView);
         nodesView.setBackgroundColor(Color.BLACK);
     }

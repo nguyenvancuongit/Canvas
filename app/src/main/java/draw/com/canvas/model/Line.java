@@ -17,14 +17,15 @@ public class Line {
         paint.setColor(Color.WHITE);
     }
 
+    public void setNodes(Node[] nodes) {
+        this.nodes = nodes;
+    }
+
     public void draw(Canvas canvas) {
         for (Node node : nodes) {
-            if (node.getIdParent() == -1) {    // is parent node
-                for (Node childNode : nodes) {
-                    if (childNode.getIdParent() == node.getId()) {
-                        canvas.drawLine(node.getX(), node.getY(), childNode.getX(), childNode.getY(), paint);
-                    }
-                }
+            if (node.getIdParent() != -1) {
+                Node parentNode = nodes[node.getIdParent()];
+                canvas.drawLine(node.getX(), node.getY(), parentNode.getX(), parentNode.getY(), paint);
             }
         }
     }
